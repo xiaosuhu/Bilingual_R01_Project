@@ -1,0 +1,1 @@
+MNIcoordBi=[MNIcoord;[MNIcoord(:,1)*-1 MNIcoord(:,2) MNIcoord(:,3)]];
