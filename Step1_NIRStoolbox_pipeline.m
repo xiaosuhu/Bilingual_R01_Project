@@ -77,25 +77,26 @@ SubjStats = Demo.run(SubjStats);
 tic
 disp('Running GroupStats1 GLM')
 grouplevelpipeline=nirs.modules.MixedEffects();
-grouplevelpipeline.formula ='beta ~ -1 + Task:cond + lwid_raw + age + p1_education + (1|Subject)';
+grouplevelpipeline.formula ='beta ~ -1 + Task:cond + lwidr + age + p1education + (1|Subject)';
 GroupStats1 = grouplevelpipeline.run(SubjStats);
 disp('GroupStats done!')
 toc
 
-% writetable(GroupStats1.table,'nirstool_grouplevel.xlsx');
-% 
-% %% Rename the stims for output
-% 
-% j = nirs.modules.RenameStims();
-% 
-% j.listOfChanges = {
-%     'stim_channel1:01', 'Easy';
-%     'stim_channel2:01', 'Hard';
-%     'stim_channel3:01', 'Control'; };
-% 
-% GroupStats1=j.run(GroupStats1);
-% SubjStats=j.run(SubjStats);
-% 
-% for i=1:10
-%     writetable(SubjStats(i).table,'nirstool_subjectlevel.xlsx','Sheet',strcat('Sub',num2str(i)));
-% end
+%% MA & PA separate group level analysis 
+tic
+disp('Running GroupStats MA GLM')
+grouplevelpipeline1=nirs.modules.MixedEffects();
+% grouplevelpipeline1.formula ='beta ~ -1 + cond + lwidr + age + p1education + elmmr + (1|Subject)';
+grouplevelpipeline1.formula ='beta ~ -1 + cond + (1|Subject)';
+GroupStatsMAnoDemoScore = grouplevelpipeline1.run(N83MASubjStats);
+disp('GroupStats done!')
+toc
+
+tic
+disp('Running GroupStats PA GLM')
+grouplevelpipeline2=nirs.modules.MixedEffects();
+% grouplevelpipeline2.formula ='beta ~ -1 + cond + lwidr + age + p1education + ctoppr + (1|Subject)';
+grouplevelpipeline2.formula ='beta ~ -1 + cond + (1|Subject)';
+GroupStatsPAnoDemoScore = grouplevelpipeline2.run(N83PASubjStats);
+disp('GroupStats done!')
+toc
