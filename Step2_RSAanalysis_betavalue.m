@@ -9,10 +9,10 @@
 
 %% RSA Analysis
 RSAvec=[];
-for i=1:78
-    RSAvec=[RSAvec;RSAanalysis(N83MASubjStats(i),N83PASubjStats(i))];
+for i=1:80
+    RSAvec=[RSAvec;RSAanalysis(N80MASubjStats(i),N80PASubjStats(i))];
 end
-demovar=readtable('/Users/xiaosuhu/Documents/MATLAB/PROJECT_BilingualRO1/Demo_Variables_N83_NIRStoolbox.xlsx');
+demovar=readtable('/Users/xiaosuhu/Documents/MATLAB/PROJECT_BilingualRO1/Data/Monolingual_80_CHRemoved/Demo_Variables_N80_NIRStoolbox.xlsx');
 
 for i=2:6
     for j=1:6
