@@ -122,7 +122,9 @@ p=Contrasttable.p(strcmp(Contrasttable.type,'hbo'));
 end
 
 function plot(intensity,onlypositive,p)
-load MNIcoordBi.mat % Load Coordinates
+load CHMNI_Bilateral46_AUG2020.mat % Load Coordinates - Updated coordinates on Aug 2020
+    % MNIcoordUnilateral23_AUG2020: Left hemisphere, removed channels 7 & 8 
+    % Localization fixed August 2020, all coordinates shifted down slightly
 mx=4;
 mn=-4;
 
