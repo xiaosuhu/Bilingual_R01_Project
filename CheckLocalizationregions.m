@@ -46,13 +46,13 @@ optodeMNIPOR=[-61	34	-7
 srcMNIPOR=optodeMNIPOR(1:6,:);
 detMNIPOR=optodeMNIPOR(7:18,:);
 
-
+% Plot the Channle Setup Map
 load BilingualSD.mat
 displaycolorswitch=6;
 ChannelList=SD.MeasList(1:23,1:2);
-% optodeMNI=optodeMNI-repmat([10 -5 2],size(optodeMNI,1),1);
+orig=[96.5-10 119.5 96.5-10]; % This is the origin of the MNI space, it is modified and it is very important in my localization system.
 
-Plot3D_channel_setup(optodeMNIMRI,ChannelList,displaycolorswitch);
+Plot3D_channel_setup(optodeMNIPOR+repmat(orig,size(optodeMNIPOR,1),1),ChannelList,displaycolorswitch);
 
 %% Estimate the CH relevant MNI
 srcMNI=srcMNIPOR;

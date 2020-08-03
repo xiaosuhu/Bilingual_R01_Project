@@ -1,22 +1,39 @@
-c1MA=[0 0 0 0 1 0 0 1 0 0 1 0 0];
+c1MA=[0 0 0 0 1 0 0 0 0 0 0 0 0];
+c2MA=[0 0 0 0 0 0 0 1 0 0 0 0 0];
+c3MA=[0 0 0 0 0 0 0 0 0 0 1 0 0];
+c4MA=[0 0 0 0 1 0 0 1 0 0 1 0 0];
+
 ageMA=[1 0 0 0 0 0 0 0 0 0 0 0 0];
 elmmMA=[0 1 0 0 0 0 0 0 0 0 0 0 0];
 lwidMA=[0 0 1 0 0 0 0 0 0 0 0 0 0];
 p1eduMA=[0 0 0 1 0 0 0 0 0 0 0 0 0];
 
-[intensity1,p1]=getintensity(c1MA,GroupStatsMA);
+[intensity11,p11]=getintensity(c1MA,GroupStatsMA);
+[intensity12,p12]=getintensity(c2MA,GroupStatsMA);
+[intensity13,p13]=getintensity(c3MA,GroupStatsMA);
+[intensity14,p14]=getintensity(c4MA,GroupStatsMA);
+
 [intensity2,p2]=getintensity(ageMA,GroupStatsMA);
 [intensity3,p3]=getintensity(elmmMA,GroupStatsMA);
 [intensity4,p4]=getintensity(lwidMA,GroupStatsMA);
 [intensity5,p5]=getintensity(p1eduMA,GroupStatsMA);
 
-c1PA=[0 0 0 0 1 0 0 1 0 0 1 0 0];
+c1PA=[0 0 0 0 1 0 0 0 0 0 0 0 0];
+c2PA=[0 0 0 0 0 0 0 1 0 0 0 0 0];
+c3PA=[0 0 0 0 0 0 0 0 0 0 1 0 0];
+c4PA=[0 0 0 0 1 0 0 1 0 0 1 0 0];
+
 agePA=[1 0 0 0 0 0 0 0 0 0 0 0 0];
 ctoppPA=[0 1 0 0 0 0 0 0 0 0 0 0 0];
 lwidPA=[0 0 1 0 0 0 0 0 0 0 0 0 0];
 p1eduPA=[0 0 0 1 0 0 0 0 0 0 0 0 0];
 
-[intensity6,p6]=getintensity(c1PA,GroupStatsPA);
+[intensity61,p61]=getintensity(c1PA,GroupStatsPA);
+[intensity62,p62]=getintensity(c2PA,GroupStatsPA);
+[intensity63,p63]=getintensity(c3PA,GroupStatsPA);
+[intensity64,p64]=getintensity(c4PA,GroupStatsPA);
+
+
 [intensity7,p7]=getintensity(agePA,GroupStatsPA);
 [intensity8,p8]=getintensity(ctoppPA,GroupStatsPA);
 [intensity9,p9]=getintensity(lwidPA,GroupStatsPA);
@@ -25,11 +42,24 @@ p1eduPA=[0 0 0 1 0 0 0 0 0 0 0 0 0];
 
 % MA
 onlypositive=0;
+
 figure
 
-plot(intensity1,onlypositive,p1);
-title('MA Easy+Hard+Control')
+subplot(2,2,1)
+plot(intensity11,onlypositive,p11);
+title('MA Easy')
 
+subplot(2,2,2)
+plot(intensity12,onlypositive,p12);
+title('MA Hard')
+
+subplot(2,2,3)
+plot(intensity13,onlypositive,p13);
+title('MA Cont')
+
+subplot(2,2,4)
+plot(intensity14,onlypositive,p14);
+title('MA Easy + Hard + Cont')
 figure
 
 subplot(2,2,1);
@@ -47,10 +77,24 @@ title('MAP1_EDU')
 
 
 % PA
+
 figure
 
-plot(intensity6,onlypositive,p6);
-title('PA Easy+Hard+Control')
+subplot(2,2,1)
+plot(intensity61,onlypositive,p61);
+title('PA Easy')
+
+subplot(2,2,2)
+plot(intensity62,onlypositive,p62);
+title('PA Hard')
+
+subplot(2,2,3)
+plot(intensity63,onlypositive,p63);
+title('PA Cont')
+
+subplot(2,2,4)
+plot(intensity64,onlypositive,p64);
+title('PA Easy + Hard + Cont')
 
 figure
 

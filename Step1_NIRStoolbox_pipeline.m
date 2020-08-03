@@ -49,7 +49,7 @@ disp('Initial GLM complete')
 
 % Adding temporal & dispersion derivatives to canonical HRF function, DCT matrix to account for signal drift over time
 firstlevelbasis.incDeriv=1;
-firstlevelglm.trend_func=@(t) nirs.design.trend.dctmtx(t,0.001);
+firstlevelglm.trend_func=@(t) nirs.design.trend.dctmtx(t,0.008);
 disp('Added DCT matrix + 2 derivatives')
 
 % HRF peak time = 6s based on Friederici and Booth papers (e.g. Brauer, Neumann & Friederici, 2008, NeuroImage)
@@ -67,7 +67,7 @@ disp('Done!')
 
 %% Demographics Behavioral Correlation
 Demo = nirs.modules.AddDemographics();
-Demo.demoTable = readtable('/Users/xiaosuhu/Documents/MATLAB/PROJECT_BilingualRO1/Demo_Variables_N83_NIRStoolbox.xlsx');
+Demo.demoTable = readtable('/Users/xiaosuhu/Documents/MATLAB/PROJECT_BilingualRO1/Data/Monolingual_80_CHRemoved/Demo_Variables_N80_NIRStoolbox.xlsx');
 Demo.varToMatch='Subject';
 SubjStats = Demo.run(SubjStats);
 
@@ -83,12 +83,15 @@ disp('GroupStats done!')
 toc
 
 %% MA & PA separate group level analysis 
+N80MASubjStats=SubjStats(1:2:end-1);
+N80PASubjStats=SubjStats(2:2:end);
+
 tic
 disp('Running GroupStats MA GLM')
 grouplevelpipeline1=nirs.modules.MixedEffects();
 grouplevelpipeline1.formula ='beta ~ -1 + cond + lwidr + age + p1education + elmmr + (1|Subject)';
 % grouplevelpipeline1.formula ='beta ~ -1 + cond + (1|Subject)';
-GroupStatsMA = grouplevelpipeline1.run(N83MASubjStats);
+GroupStatsMA = grouplevelpipeline1.run(N80MASubjStats);
 disp('GroupStats done!')
 toc
 
@@ -97,6 +100,6 @@ disp('Running GroupStats PA GLM')
 grouplevelpipeline2=nirs.modules.MixedEffects();
 grouplevelpipeline2.formula ='beta ~ -1 + cond + lwidr + age + p1education + ctoppr + (1|Subject)';
 % grouplevelpipeline2.formula ='beta ~ -1 + cond + (1|Subject)';
-GroupStatsPA = grouplevelpipeline2.run(N83PASubjStats);
+GroupStatsPA = grouplevelpipeline2.run(N80PASubjStats);
 disp('GroupStats done!')
 toc
