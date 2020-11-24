@@ -78,6 +78,7 @@ tic
 disp('Running GroupStats1 GLM')
 grouplevelpipeline=nirs.modules.MixedEffects();
 grouplevelpipeline.formula ='beta ~ -1 + Task:cond + lwidr + age + p1education + (1|Subject)';
+grouplevelpipeline.dummyCoding='reference'
 GroupStats1 = grouplevelpipeline.run(SubjStats);
 disp('GroupStats done!')
 toc
@@ -101,5 +102,16 @@ grouplevelpipeline2=nirs.modules.MixedEffects();
 grouplevelpipeline2.formula ='beta ~ -1 + cond + lwidr + age + p1education + ctoppr + (1|Subject)';
 % grouplevelpipeline2.formula ='beta ~ -1 + cond + (1|Subject)';
 GroupStatsPA = grouplevelpipeline2.run(N80PASubjStats);
+disp('GroupStats done!')
+toc
+
+%% Temp Testing********************
+
+tic
+disp('Running GroupStats MA GLM')
+grouplevelpipeline1=nirs.modules.MixedEffects();
+grouplevelpipeline1.formula ='beta ~ -1 + cond*age + (1|Subject)';
+grouplevelpipeline.dummyCoding='reference';
+GroupStatsMA = grouplevelpipeline1.run(N80MASubjStats);
 disp('GroupStats done!')
 toc
