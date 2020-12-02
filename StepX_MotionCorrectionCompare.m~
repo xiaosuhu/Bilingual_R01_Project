@@ -194,10 +194,10 @@ subplot(2,3,4)
 plot3Dbrain(intensity21sp,onlypositive,p21sp);
 title('PA Easy')
 subplot(2,3,5)
-plot3Dbrain(intensity22sp,onlypositive,p22sp);
+plot3Dbrain(intensity22,onlypositive,p22t);
 title('PA Hard')
 subplot(2,3,6)
-plot3Dbrain(intensity23sp,onlypositive,p23sp);
+plot3Dbrain(intensity23t,onlypositive,p23t);
 title('PA Control')
 
 %------------------------------
@@ -210,27 +210,6 @@ title('PA Control')
 [intensity22wv,p22wv]=getIntensity(hardPA,GroupStats_wv);
 [intensity23wv,p23wv]=getIntensity(controlPA,GroupStats_wv);
 
-
-figure
-subplot(2,3,1)
-plot3Dbrain(intensity11wv,onlypositive,p11wv);
-title('MA Easy')
-subplot(2,3,2)
-plot3Dbrain(intensity12wv,onlypositive,p12wv);
-title('MA Hard')
-subplot(2,3,3)
-plot3Dbrain(intensity13wv,onlypositive,p13wv);
-title('MA Control')
-
-subplot(2,3,4)
-plot3Dbrain(intensity21wv,onlypositive,p21wv);
-title('PA Easy')
-subplot(2,3,5)
-plot3Dbrain(intensity22wv,onlypositive,p22wv);
-title('PA Hard')
-subplot(2,3,6)
-plot3Dbrain(intensity23wv,onlypositive,p23wv);
-title('PA Control')
 %------------------------------
 % PCA
 [intensity11pc,p11pc]=getIntensity(easyMA,GroupStats_pc);
@@ -240,25 +219,3 @@ title('PA Control')
 [intensity21pc,p21pc]=getIntensity(easyPA,GroupStats_pc);
 [intensity22pc,p22pc]=getIntensity(hardPA,GroupStats_pc);
 [intensity23pc,p23pc]=getIntensity(controlPA,GroupStats_pc);
-
-
-figure
-subplot(2,3,1)
-plot3Dbrain(intensity11pc,onlypositive,p11pc);
-title('MA Easy')
-subplot(2,3,2)
-plot3Dbrain(intensity12pc,onlypositive,p12pc);
-title('MA Hard')
-subplot(2,3,3)
-plot3Dbrain(intensity13pc,onlypositive,p13pc);
-title('MA Control')
-
-subplot(2,3,4)
-plot3Dbrain(intensity21pc,onlypositive,p21pc);
-title('PA Easy')
-subplot(2,3,5)
-plot3Dbrain(intensity22pc,onlypositive,p22pc);
-title('PA Hard')
-subplot(2,3,6)
-plot3Dbrain(intensity23pc,onlypositive,p23pc);
-title('PA Control')
