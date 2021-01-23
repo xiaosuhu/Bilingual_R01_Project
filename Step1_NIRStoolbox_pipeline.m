@@ -6,6 +6,24 @@ raw = nirs.io.loadDirectory(datadir, {'Subject','Task'});
 disp('All .nirs files loaded!')
 disp('-----------------------')
 
+%% Check is every data file is normal and exclude them from furthure
+% analysis
+excl=[];
+count=1;
+for i=1:length(raw)
+    if length(raw(i).stimulus.keys)~=3
+        excl(count)=i;
+        count=count+1;
+    elseif length(raw(i).stimulus.values{1}.onset)~=16||...
+            length(raw(i).stimulus.values{2}.onset)~=16||...
+            length(raw(i).stimulus.values{3}.onset)~=16
+        excl(count)=i;
+        count=count+1;
+    end
+end
+
+raw(excl)=[];
+
 % set the duration to be 6 sec
 for i=1:length(raw)
     for j=1:length(raw(i).stimulus.values{1}.dur)
