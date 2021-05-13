@@ -128,8 +128,8 @@ toc
 tic
 disp('Running GroupStats MA GLM')
 grouplevelpipeline1=nirs.modules.MixedEffects();
-grouplevelpipeline1.formula ='beta ~ -1 + cond*age + (1|Subject)';
-grouplevelpipeline.dummyCoding='reference';
-GroupStatsMA = grouplevelpipeline1.run(N80MASubjStats);
+grouplevelpipeline1.formula ='beta ~ -1 + Task:cond + (1|Subject)';
+% grouplevelpipeline.dummyCoding='reference';
+GroupStatsMA = grouplevelpipeline1.run(SubjStats_MatchedM);
 disp('GroupStats done!')
 toc
